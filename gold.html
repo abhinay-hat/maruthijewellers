@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Collections | Maruthi Jewellers</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #fff;
+    color: #222;
+}
+
+.gold-page {
+    padding: 40px 6%;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin: 40px 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+.card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card p {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    padding: 30px;
+    z-index: 999;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 70vh;
+    border-radius: 12px;
+}
+
+.modal p {
+    color: #fff;
+    max-width: 600px;
+    margin: 15px auto;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .card img {
+        height: 220px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<section class="gold-page">
+
+    <h1 class="page-title">Gold Jewellery Collections</h1>
+
+    <!-- RINGS -->
+    <h2 class="section-title">Gold Rings</h2>
+    <div class="grid">
+        <div class="card" onclick="openModal(this)">
+            <img src="https://tiimg.tistatic.com/fp/0/270/fancy-gold-finger-rings-528.jpg">
+            <p>Elegant handcrafted gold ring with a timeless finish, perfect for daily and festive wear.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i16//437Wx649H/MP000000021200899_437Wx649H_202402160539101.jpeg">
+            <p>Classic premium gold ring designed for modern elegance and long-lasting shine.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i16//437Wx649H/MP000000021200959_437Wx649H_202402160541111.jpeg">
+            <p>Minimalist gold ring with refined craftsmanship, suitable for all occasions.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i16//437Wx649H/MP000000021200964_437Wx649H_202402160541081.jpeg">
+            <p>Premium polished gold ring offering a luxurious and graceful appearance.</p>
+        </div>
+    </div>
+
+    <!-- CHAINS -->
+    <h2 class="section-title">Gold Chains</h2>
+    <div class="grid">
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i24//437Wx649H/MP000000026739192_437Wx649H_202505251346435.jpeg">
+            <p>Stylish gold chain crafted with precision for a bold and elegant look.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i24//437Wx649H/MP000000026739093_437Wx649H_202505251246265.jpeg">
+            <p>Lightweight gold chain perfect for daily wear and special occasions.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://i.pinimg.com/1200x/d6/58/8e/d6588eef563cd7f37a292b0d25403cbf.jpg">
+            <p>Premium gold chain with pendant featuring elegant traditional craftsmanship.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i22//437Wx649H/MP000000025546323_437Wx649H_202503012216281.jpeg">
+            <p>Luxurious gold chain with intricate detailing and polished finish.</p>
+        </div>
+    </div>
+
+    <!-- BRACELETS -->
+    <h2 class="section-title">Gold Bracelets</h2>
+    <div class="grid">
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i14/437Wx649H/MP000000019588104_437Wx649H_202310091306591.jpeg">
+            <p>Modern gold bracelet designed for comfort and premium appearance.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i24//437Wx649H/MP000000026770432_437Wx649H_202505282201086.jpeg">
+            <p>Elegant gold bracelet suitable for festive and daily wear.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i14/1348Wx2000H/MP000000019587681_1348Wx2000H_202310091255191.jpeg">
+            <p>Premium designer gold bracelet with refined craftsmanship.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i14/437Wx649H/MP000000019572935_437Wx649H_202310081752061.jpeg">
+            <p>Classic gold bracelet offering timeless elegance.</p>
+        </div>
+    </div>
+
+    <!-- NECKLACES -->
+    <h2 class="section-title">Gold Necklaces</h2>
+    <div class="grid">
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i21//437Wx649H/MP000000024744987_437Wx649H_202412180334566.jpeg">
+            <p>Traditional gold necklace with exquisite detailing and premium finish.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i12/437Wx649H/MP000000018383312_437Wx649H_202307192117401.jpeg">
+            <p>Elegant gold necklace crafted for weddings and special occasions.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://jazzandsizzle.com/cdn/shop/files/nl-js23-40331_1.jpg?v=1700224872">
+            <p>Designer gold necklace blending modern and traditional aesthetics.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)">
+            <img src="https://img.tatacliq.com/images/i21//437Wx649H/MP000000024744981_437Wx649H_202412180334461.jpeg">
+            <p>Premium gold necklace with luxurious craftsmanship.</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg">
+    <p id="modalText"></p>
+
+    <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-btn" target="_blank">
+        Enquire on WhatsApp
+    </a>
+</div>
+<script>
+function openModal(card) {
+    const img = card.querySelector("img").src;
+    const text = card.querySelector("p").innerText;
+
+    document.getElementById("modalImg").src = img;
+    document.getElementById("modalText").innerText = text;
+    document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+</body>
+</html>
