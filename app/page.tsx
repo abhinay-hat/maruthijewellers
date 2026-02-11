@@ -24,6 +24,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import Link from "next/link";
 import { useGoldPrice, formatIndianPrice, formatPercentChange } from "@/hooks/useGoldPrice";
 
 // Animation variants
@@ -454,22 +455,24 @@ function HeroSection() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="flex flex-wrap items-center gap-4 md:gap-5"
         >
-          <motion.button
-            className="flex items-center gap-2.5 px-6 md:px-9 py-4 rounded-[30px] bg-gold-gradient group"
-            style={{ boxShadow: "0 4px 12px #D4AF3740" }}
-            whileHover={{ scale: 1.05, boxShadow: "0 8px 24px #D4AF3760" }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="font-inter text-sm font-semibold text-[var(--dark-800)] tracking-[1px]">
-              Explore Collections
-            </span>
+          <Link href="#collections">
             <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              className="flex items-center gap-2.5 px-6 md:px-9 py-4 rounded-[30px] bg-gold-gradient group"
+              style={{ boxShadow: "0 4px 12px #D4AF3740" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 8px 24px #D4AF3760" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <ArrowRight className="w-4 h-4 text-[var(--dark-800)]" />
+              <span className="font-inter text-sm font-semibold text-[var(--dark-800)] tracking-[1px]">
+                Explore Collections
+              </span>
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ArrowRight className="w-4 h-4 text-[var(--dark-800)]" />
+              </motion.div>
             </motion.div>
-          </motion.button>
+          </Link>
 
           <motion.a
             href="https://maps.google.com/?q=Maruthi+Jewellers+Warangal"
@@ -497,7 +500,7 @@ function HeroSection() {
           className="w-full h-full"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1080')",
+              "url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1080&q=80')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -548,18 +551,21 @@ function CollectionsSection() {
     {
       title: "Silver Jewellery",
       image:
-        "https://images.unsplash.com/photo-1726825990567-73f6d3597cdb?w=1080",
+        "https://images.unsplash.com/photo-1726825990567-73f6d3597cdb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      href: "/collections/silver",
     },
     {
       title: "Gold Jewellery",
       image:
-        "https://images.unsplash.com/photo-1644341129908-6477e0157037?w=1080",
+        "https://images.unsplash.com/photo-1644341129908-6477e0157037?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       featured: true,
+      href: "/collections/gold",
     },
     {
       title: "Diamond Jewellery",
       image:
-        "https://images.unsplash.com/photo-1668619322652-ccea8fa84b8d?w=1080",
+        "https://images.unsplash.com/photo-1668619322652-ccea8fa84b8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      href: "/collections/diamond",
     },
   ];
 
@@ -627,84 +633,88 @@ function CollectionCard({
   image,
   featured = false,
   index,
+  href,
 }: {
   title: string;
   image: string;
   featured?: boolean;
   index: number;
+  href: string;
 }) {
   return (
-    <motion.div
-      className={`flex flex-col rounded-[20px] overflow-hidden cursor-pointer hover-lift ${
-        featured ? "lg:scale-105" : ""
-      }`}
-      style={{
-        background: featured
-          ? "linear-gradient(135deg, #151515 0%, #1A1510 100%)"
-          : "#121212",
-        boxShadow: featured
-          ? "0 8px 24px #D4AF3720, 0 4px 16px #00000040"
-          : "0 4px 16px #00000030",
-      }}
-      whileHover={{ y: -10 }}
-    >
-      {/* Image */}
-      <div className="relative w-full h-[280px] overflow-hidden">
-        <motion.div
-          className="w-full h-full"
-          style={{
-            backgroundImage: `url(${image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.5 }}
-        />
-        {featured && (
-          <div
-            className="absolute inset-0 animate-shimmer"
+    <Link href={href}>
+      <motion.div
+        className={`relative flex flex-col rounded-[20px] overflow-hidden cursor-pointer hover-lift ${
+          featured ? "lg:scale-105" : ""
+        }`}
+        style={{
+          background: featured
+            ? "linear-gradient(135deg, #151515 0%, #1A1510 100%)"
+            : "#121212",
+          boxShadow: featured
+            ? "0 8px 24px #D4AF3720, 0 4px 16px #00000040"
+            : "0 4px 16px #00000030",
+        }}
+        whileHover={{ y: -10 }}
+      >
+        {/* Image */}
+        <div className="relative w-full h-[280px] overflow-hidden">
+          <motion.div
+            className="w-full h-full"
             style={{
-              background:
-                "linear-gradient(135deg, #D4AF3710 0%, #D4AF3730 50%, #D4AF3710 100%)",
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.5 }}
           />
-        )}
-        {/* Overlay on hover */}
-        <motion.div
-          className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0"
-          whileHover={{ opacity: 1 }}
-        >
-          <span className="font-inter text-sm font-semibold text-white tracking-[2px]">
-            VIEW COLLECTION
-          </span>
-        </motion.div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col gap-3 p-7 w-full">
-        <h3 className="font-cormorant text-[26px] font-medium text-white">
-          {title}
-        </h3>
-        <motion.div
-          className="flex items-center gap-2.5 group"
-          whileHover={{ x: 5 }}
-        >
-          <span className="font-inter text-[13px] font-semibold text-[var(--gold-primary)] tracking-[1px]">
-            Explore Collection
-          </span>
-          <ArrowRight className="w-3.5 h-3.5 text-[var(--gold-primary)] transition-transform group-hover:translate-x-1" />
-        </motion.div>
-      </div>
-
-      {/* Featured badge */}
-      {featured && (
-        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-gold-gradient">
-          <span className="font-inter text-[10px] font-bold text-[var(--dark-800)] tracking-[1px]">
-            POPULAR
-          </span>
+          {featured && (
+            <div
+              className="absolute inset-0 animate-shimmer"
+              style={{
+                background:
+                  "linear-gradient(135deg, #D4AF3710 0%, #D4AF3730 50%, #D4AF3710 100%)",
+              }}
+            />
+          )}
+          {/* Overlay on hover */}
+          <motion.div
+            className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0"
+            whileHover={{ opacity: 1 }}
+          >
+            <span className="font-inter text-sm font-semibold text-white tracking-[2px]">
+              VIEW COLLECTION
+            </span>
+          </motion.div>
         </div>
-      )}
-    </motion.div>
+
+        {/* Content */}
+        <div className="flex flex-col gap-3 p-7 w-full">
+          <h3 className="font-cormorant text-[26px] font-medium text-white">
+            {title}
+          </h3>
+          <motion.div
+            className="flex items-center gap-2.5 group"
+            whileHover={{ x: 5 }}
+          >
+            <span className="font-inter text-[13px] font-semibold text-[var(--gold-primary)] tracking-[1px]">
+              Explore Collection
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 text-[var(--gold-primary)] transition-transform group-hover:translate-x-1" />
+          </motion.div>
+        </div>
+
+        {/* Featured badge */}
+        {featured && (
+          <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-gold-gradient">
+            <span className="font-inter text-[10px] font-bold text-[var(--dark-800)] tracking-[1px]">
+              POPULAR
+            </span>
+          </div>
+        )}
+      </motion.div>
+    </Link>
   );
 }
 
@@ -961,7 +971,7 @@ function AboutSection() {
           className="w-full h-full"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1080')",
+              "url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=1080&q=80')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -1054,7 +1064,7 @@ function ContactSection() {
         className="flex flex-wrap justify-center items-center gap-5"
       >
         <motion.a
-          href="https://wa.me/919849497131"
+          href="https://wa.me/919640482131"
           target="_blank"
           className="flex items-center gap-3 px-8 py-3.5 rounded-[30px] bg-[var(--green-whatsapp)]"
           whileHover={{ scale: 1.05 }}
@@ -1175,15 +1185,21 @@ function Footer() {
               Quick Links
             </h4>
             <nav className="flex flex-col gap-4">
-              {["Our Collections", "About Us", "Contact"].map((link, index) => (
-                <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(" ", "")}`}
-                  className="font-inter text-sm font-normal text-[var(--text-subtle)] hover:text-[var(--gold-light)] transition-colors"
-                  whileHover={{ x: 5 }}
-                >
-                  {link}
-                </motion.a>
+              {[
+                { label: "Gold Jewellery", href: "/collections/gold" },
+                { label: "Silver Jewellery", href: "/collections/silver" },
+                { label: "Diamond Jewellery", href: "/collections/diamond" },
+                { label: "About Us", href: "#about" },
+                { label: "Contact", href: "#contact" },
+              ].map((link) => (
+                <motion.div key={link.label} whileHover={{ x: 5 }}>
+                  <Link
+                    href={link.href}
+                    className="font-inter text-sm font-normal text-[var(--text-subtle)] hover:text-[var(--gold-light)] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
             </nav>
           </motion.div>
@@ -1228,7 +1244,7 @@ function Footer() {
         {/* Social Icons */}
         <div className="flex items-center gap-3">
           {[
-            { icon: MessageCircle, href: "https://wa.me/919849497131" },
+            { icon: MessageCircle, href: "https://wa.me/919640482131" },
             { icon: Instagram, href: "https://instagram.com/mj_gold12" },
           ].map((social, index) => (
             <motion.a
@@ -1255,7 +1271,7 @@ function Footer() {
 function FloatingWhatsApp() {
   return (
     <motion.a
-      href="https://wa.me/919849497131"
+      href="https://wa.me/919640482131"
       target="_blank"
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[var(--green-whatsapp)] shadow-lg"
       initial={{ scale: 0 }}
